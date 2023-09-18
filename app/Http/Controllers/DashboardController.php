@@ -12,6 +12,6 @@ class DashboardController extends Controller
     public function index()
     {
         // Afficher le dashboard
-        return view('dashboard', compact('nbreProduits', 'nbreCategories'));
+        return view('dashboard');
     }
 }
