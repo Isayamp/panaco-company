@@ -4,7 +4,6 @@
     <!-- head -->
     @include('inc.head')
 
-    <body>
-        @yield('content')   
-    </body>
+    @yield('content')   
+    
 </html>
