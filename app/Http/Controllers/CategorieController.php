@@ -32,7 +32,23 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $request->validate([
+            'designation_categorie' => ['required', 'max:25', 'min:2', 'unique:categories'],
+        ]);
+        
+        // Création nouvelle objet catégorie
+        $categorie = new Categorie;
+
+        $categorie->designation_categorie = $request->designation_categorie;
+
+        // dd($categorie);
+
+        // Enregis
+        $categorie->save();
+
+        // 
+        return redirect('categories')->with('success', 'Nouvelle catégorie enrégistée !');
     }
 
     /**
