@@ -15,8 +15,11 @@ class CategorieController extends Controller
         // Charger les categorie
         $categorie = Categorie::all();
 
+        // Compteur
+        $i = 0;
+
         // Retourner la vue index avec les catégories
-        return view('categories.index', compact('categorie'));
+        return view('categories.index', compact('categorie', 'i'));
     }
 
     /**
