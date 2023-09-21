@@ -67,7 +67,12 @@ class CategorieController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Selectionner par id
+        $categorie = Categorie::findOrfail($id);
+   
+
+        // Affichage du formulaire
+        return view('categories.edit', compact('categorie'));
     }
 
     /**
