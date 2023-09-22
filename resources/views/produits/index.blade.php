@@ -2,7 +2,21 @@
 
 @section('content')
     <div class="container-fluid p-0">
-
+        <!-- Afficher les messages d'erreurs -->
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="alert-message">
+                    <h4 class="alert-heading text-default"><strong>Une erreur est survenue</strong></h4>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+        <!-- Fin message d'erreur -->
 
         <!-- Header -->
         <div class="row mb-2 mb-xl-3">
