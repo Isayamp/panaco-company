@@ -148,9 +148,9 @@
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title">Produits</h5>
-								<h1 class="mt-1 mb-3">  354</h1>
+								<h1 class="mt-1 mb-3"> 1 253</h1>
 								<div class="mb-0">
-									<span class="badge badge-primary-light"><i class="mdi mdi-arrow-bottom-right"></i> 104</span>
+									<span class="badge badge-primary-light"><i class="mdi mdi-arrow-bottom-right"></i> 47</span>
 									<span class="text-muted">Catégories</span>
 								</div>
 							</div>

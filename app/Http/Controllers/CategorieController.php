@@ -1,0 +1,115 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Categorie;
+use Illuminate\Http\Request;
+
+class CategorieController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        // Charger les categorie
+        $categorie = Categorie::all();
+
+        // Compteur
+        $i = 0;
+
+        // Retourner la vue index avec les catégories
+        return view('categories.index', compact('categorie', 'i'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // Validation
+        $request->validate([
+            'designation_categorie' => ['required', 'max:25', 'min:2', 'unique:categories'],
+        ]);
+        
+        // Création nouvelle objet catégorie
+        $categorie = new Categorie;
+
+        $categorie->designation_categorie = $request->designation_categorie;
+
+        // dd($categorie);
+
+        // Enregis
+        $categorie->save();
+
+        // 
+        return redirect('categories')->with('success', 'Nouvelle catégorie enrégistée !');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        // Selectionner par id
+        $categorie = Categorie::findOrfail($id);
+   
+
+        // Affichage du formulaire
+        return view('categories.edit', compact('categorie'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        // Validation
+        $request->validate([
+            'designation_categorie' => ['required', 'max:25', 'min:2', 'unique:categories'],
+        ]);
+
+        // Identifier l'élément ç mettre à joiur par eapport à son id
+        $categorie = Categorie::findOrfail($id);
+
+        // Récuperer l'élement d uformulaire et l'affecter dans categorie
+        $categorie->designation_categorie = $request->get('designation_categorie');
+
+        // Enregistrerment
+        $categorie->save();
+
+        // Return ku index
+        return redirect('categories');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        // Spécifier l'élement à supprimmert
+        $categorie = Categorie::findOrfail($id);
+
+        // Supprimer
+        $categorie->delete();
+
+        // Reiriger sur l'index
+        return redirect('categories');
+    }
+}
