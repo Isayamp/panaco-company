@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description_produit')->nullable();
             $table->decimal('prix', 10, 2);
             $table->string('image')->nullable();
-            $table->boolean('disponiblite')->nullable()->default(false);
+            $table->boolean('disponibilite')->nullable()->default(false);
             $table->unsignedBigInteger('categorie_id'); // Clé trangère
             $table->timestamps();
 
