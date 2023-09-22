@@ -52,7 +52,83 @@
                     </div>
                 </div>
 
-                
+                <!-- Modal de modification pour chaque produit -->
+                <div class="modal fade" id="editProductModal{{ $produit->id }}" tabindex="-1"
+                    aria-labelledby="editProductModalLabel{{ $produit->id }}" aria-hidden="true">
+
+                    <!-- Contenu du modal de modification -->
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editProductModalLabel{{ $produit->id }}">Modifier le Produit
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('produits.update', $produit->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group m-3">
+                                        <label for="designation_produit">Désignation</label>
+                                        <input type="text" class="form-control" name="designation_produit"
+                                            value="{{ $produit->designation_produit }}" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="description_produit">Description</label>
+                                        <textarea class="form-control" name="description_produit" rows="3">{{ $produit->description_produit }}</textarea>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="prix">Prix</label>
+                                        <input type="number" class="form-control" name="prix" step="0.01"
+                                            value="{{ $produit->prix }}" required>
+                                    </div>
+                                    {{-- <div class="form-group mb-3">
+                                        <label for="image">Image</label>
+                                        <input type="file" class="form-control" id="image" name="image"
+                                            value="{{ $produit->image }}">
+                                    </div> --}}
+                                    <div class="form-group mb-3">
+                                        <label for="image">Image</label>
+                                        <input type="file" class="form-control" id="image" name="image">
+                                    
+                                        @if ($produit->image)
+                                            <p class="mt-2">Image actuelle :</p>
+                                            <img src="{{ asset('storage/' . $produit->image) }}" alt="{{ $produit->designation_produit }}" class="img-thumbnail">
+                                        @else
+                                            <p class="mt-2">Aucune image actuelle</p>
+                                        @endif
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="disponibilite">Disponibilité</label>
+                                        <select class="form-control" name="disponibilite">
+                                            <option value="1" {{ $produit->disponibilite ? 'selected' : '' }}>
+                                                Disponible</option>
+                                            <option value="0" {{ !$produit->disponibilite ? 'selected' : '' }}>Non
+                                                disponible</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="categorie_id">Catégorie</label>
+                                        <select class="form-control" name="categorie_id" id="categorie_id">
+                                            <option value="" disabled selected>Sélectionner</option>
+                                            @foreach ($categories as $categorie)
+                                                <option value="{{ $categorie->id }}"
+                                                    {{ $produit->categorie_id == $categorie->id ? 'selected' : '' }}>
+                                                    {{ $categorie->designation_categorie }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Modifier</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             @endforeach
         </div>
 
