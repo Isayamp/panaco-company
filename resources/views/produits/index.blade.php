@@ -84,11 +84,6 @@
                                         <input type="number" class="form-control" name="prix" step="0.01"
                                             value="{{ $produit->prix }}" required>
                                     </div>
-                                    {{-- <div class="form-group mb-3">
-                                        <label for="image">Image</label>
-                                        <input type="file" class="form-control" id="image" name="image"
-                                            value="{{ $produit->image }}">
-                                    </div> --}}
                                     <div class="form-group mb-3">
                                         <label for="image">Image</label>
                                         <input type="file" class="form-control" id="image" name="image">
