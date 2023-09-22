@@ -271,7 +271,7 @@
 <script src="{{ asset('js/datatables.js') }}"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         // Datatables with Buttons
         var datatablesButtons = $("#datatables-buttons").DataTable({
             responsive: true,
@@ -282,3 +282,34 @@
     });
 </script>
 
+<!-- Mes scripts pour reherche de prosduits -->
+<script>
+    // Sélectionnez l'élément HTML du champ de recherche dans le header
+    const headerSearchInput = document.getElementById('headerSearch');
+
+    // Écoutez l'événement de saisie dans le champ de recherche du header
+    headerSearchInput.addEventListener('input', () => {
+        const searchTerm = headerSearchInput.value.trim().toLowerCase();
+
+        // Parcourez tous les produits sur la page d'index
+        const productsOnIndex = document.querySelectorAll('.col-md-4');
+
+        productsOnIndex.forEach((product) => {
+            const productName = product.querySelector('.card-title').textContent.toLowerCase();
+            const productCategory = product.querySelector('.text-info').textContent.toLowerCase();
+            const productDescription = product.querySelector('.card-text').textContent.toLowerCase();
+
+            // Vérifiez si le nom du produit, la catégorie ou la description contiennent le terme de recherche
+            if (
+                productName.includes(searchTerm) ||
+                productCategory.includes(searchTerm) ||
+                productDescription.includes(searchTerm)
+            ) {
+                product.style.display = 'block'; // Affichez le produit
+            } else {
+                product.style.display = 'none'; // Masquez le produit
+            }
+        });
+    });
+</script>
+<!--  -->
