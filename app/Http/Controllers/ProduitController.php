@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
 {
@@ -11,7 +13,18 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+        // Charger les catégories
+        $categories = Categorie::all();
+
+        // Requêtte pour charger les produits (avec jointure -> clé étrangère)
+        $produits = DB::table('produits')
+                                ->join('categories', 'produits.categorie_id', 'categories.id')
+                                // ->select('categories.*', 'produits.*')
+                                ->select('produits.*', 'categories.designation_categorie as categorie')
+                                ->get();
+
+        // Aficher le tableau
+        return view('produits.index', compact('categories', 'produits'));
     }
 
     /**
