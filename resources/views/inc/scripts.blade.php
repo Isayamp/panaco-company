@@ -1,4 +1,4 @@
-<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -268,7 +268,7 @@
 </script>
 
 <!-- Datatable -->
-<script src="{{ asset('assets/js/datatables.js') }}"></script>
+<script src="{{ asset('js/datatables.js') }}"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

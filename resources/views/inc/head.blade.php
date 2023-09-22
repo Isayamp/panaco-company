@@ -8,16 +8,16 @@
         content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="{!! asset('assets/img/icons/icon-48x48.png') !!}">
+    <link rel="shortcut icon" href="{!! asset('img/icons/icon-48x48.png') !!}">
 
     {{-- <link rel="canonical" href="index.htm"> --}}
 
     <!-- Pour Datatable -->
-    <link rel="canonical" href="{!! asset('assets/tables-datatables-buttons.html') !!}">
+    <link rel="canonical" href="{!! asset('tables-datatables-buttons.html') !!}">
 
-    <title>Panaco Store - Admin</title>
+    <title>Panaco App - Admin</title>
 
-    <link href="{!! asset("assets/css2.css?family=Inter:wght@300;400;600&display=swap") !!}" rel="stylesheet">
+    <link href="{!! asset("css2.css?family=Inter:wght@300;400;600&display=swap") !!}" rel="stylesheet">
 
     <!-- Choose your prefered color scheme -->
     <!-- <link href="{{ asset('css/light.css') }}" rel="stylesheet"> -->
@@ -25,15 +25,15 @@
 
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
-    <link class="js-stylesheet" href="{!! asset("assets/css/light.css") !!}" rel="stylesheet">
-    <script src="{!! asset("assets/js/settings.js") !!}"></script>
+    <link class="js-stylesheet" href="{!! asset("css/light.css") !!}" rel="stylesheet">
+    <script src="{!! asset("js/settings.js") !!}"></script>
     <style>
         body {
             opacity: 100;
         }
     </style>
     <!-- END SETTINGS -->
-    <script async="" src="{!! asset("assets/gtag/js.js?id=UA-120946860-10") !!}"></script>
+    <script async="" src="{!! asset("gtag/js.js?id=UA-120946860-10") !!}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 

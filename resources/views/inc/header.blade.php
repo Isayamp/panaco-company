@@ -99,7 +99,7 @@
             <!-- User -->
             <li class="nav-item dropdown">
                 <a class="nav-icon pe-md-0 dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                    <img src="{{ asset('assets/img/avatars/avatar.jpg') }}" title="{{ Auth::user()->name }}"
+                    <img src="{{ asset('img/avatars/avatar.jpg') }}" title="{{ Auth::user()->name }}"
                         class="avatar img-fluid rounded" alt="{{ Auth::user()->name }}">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
