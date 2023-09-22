@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
+            $table->string('designation_produit')->unique();
+            $table->text('description_produit')->nullable();
+            $table->decimal('prix', 10, 2);
+            $table->string('image')->nullable();
+            $table->boolean('disponiblite')->nullable()->default(false);
+            $table->unsignedBigInteger('categorie_id'); // Clé trangère
             $table->timestamps();
+
+            $table->foreign('categorie_id')
+                    ->references('id')
+                    ->on('categories')
+                    ->onDelete('cascade');
         });
     }
 
