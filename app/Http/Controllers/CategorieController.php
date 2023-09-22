@@ -103,6 +103,13 @@ class CategorieController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Spécifier l'élement à supprimmert
+        $categorie = Categorie::findOrfail($id);
+
+        // Supprimer
+        $categorie->delete();
+
+        // Reiriger sur l'index
+        return redirect('categories');
     }
 }
