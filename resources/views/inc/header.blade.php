@@ -5,7 +5,9 @@
 
     <form class="d-none d-sm-inline-block">
         <div class="input-group input-group-navbar">
-            <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
+            {{-- <input type="text" class="form-control" placeholder="Search…" aria-label="Search"> --}}
+            <input type="text" class="form-control" placeholder="Search…" aria-label="Search" id="headerSearch">
+
             <button class="btn" type="button">
                 <i class="align-middle" data-feather="search"></i>
             </button>
