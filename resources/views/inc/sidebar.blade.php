@@ -32,7 +32,7 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Parametres</span>
                 </a>
                 <ul id="auth" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{-- {{ route('categories.index') }} --}}">Categories
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('categories.index') }}">Categories
                             Produit</a></li>
                 </ul>
             </li>
