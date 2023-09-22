@@ -6,6 +6,7 @@ use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProduitController extends Controller
 {
@@ -90,7 +91,41 @@ class ProduitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Récupération du produit
+        $produit = Produit::findOrFail($id);
+
+        // Validation des données
+        $request->validate([
+            'designation_produit' => 'required',
+            'description_produit' => 'required',
+            'prix' => 'required',
+            'categorie_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Vérification si un nouveau fichier image a été téléchargé
+        if ($request->hasFile('image')) {
+            // Supprimer l'ancienne image si elle existe
+            if ($produit->image) {
+                Storage::delete('public/' . $produit->image);
+            }
+
+            // Enregistrer la nouvelle image
+            $todayDate = date('YmdHist');
+            $imagePath = $request->file('image')->storeAs(
+                'images',
+                $todayDate . '.' . $request->file('image')->getClientOriginalExtension(),
+                'public'
+            );
+
+            // Mettre à jour le produit avec la nouvelle image
+            $produit->update(array_merge($request->all(), ['image' => $imagePath]));
+        } else {
+            // Si aucun nouveau fichier image n'a été téléchargé, conservez l'image actuelle
+            $produit->update($request->all());
+        }
+
+        return redirect()->route('produits.index')->with('success', 'Produit modifié avec succès.');
     }
 
     /**
