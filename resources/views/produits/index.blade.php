@@ -56,6 +56,58 @@
             @endforeach
         </div>
 
-        
+        <!-- Modal d'ajout -->
+        <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+            aria-hidden="true">
+            <!-- Contenu du modal d'ajout -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addProductModalLabel">Ajouter un Produit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('produits.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label for="designation_produit">Désignation</label>
+                                <input type="text" class="form-control" name="designation_produit" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="description_produit">Description</label>
+                                <textarea class="form-control" name="description_produit" rows="3"></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="prix">Prix</label>
+                                <input type="number" class="form-control" name="prix" step="0.01" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="image">Image</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="disponibilite">Disponibilité</label>
+                                <select class="form-control" name="disponibilite">
+                                    <option value="1">Disponible</option>
+                                    <option value="0">Non disponible</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="categorie_id">Catégorie</label>
+                                <select class="form-control" name="categorie_id">
+                                    <option value="" disabled selected>Selectionner</option>
+                                    @foreach ($categories as $categorie)
+                                        <option value="{{ $categorie->id }}">{{ $categorie->designation_categorie }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 @endsection
