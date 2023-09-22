@@ -52,13 +52,6 @@
             @foreach ($produits as $produit)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        {{-- <div class="availability-badge @if ($produit->disponibilite) bg-success @else bg-danger @endif">
-                            @if ($produit->disponibilite)
-                                <span class="badge">Disponible</span>
-                            @else
-                                <span class="badge">Non disponible</span>
-                            @endif
-                        </div> --}}
 
                         <!-- Ligne de disponibilité -->
                         <div class="availability-line @if ($produit->disponibilite) bg-success @else bg-secondary @endif"></div>
