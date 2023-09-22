@@ -80,7 +80,22 @@ class CategorieController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validation
+        $request->validate([
+            'designation_categorie' => ['required', 'max:25', 'min:2', 'unique:categories'],
+        ]);
+
+        // Identifier l'élément ç mettre à joiur par eapport à son id
+        $categorie = Categorie::findOrfail($id);
+
+        // Récuperer l'élement d uformulaire et l'affecter dans categorie
+        $categorie->designation_categorie = $request->get('designation_categorie');
+
+        // Enregistrerment
+        $categorie->save();
+
+        // Return ku index
+        return redirect('categories');
     }
 
     /**
