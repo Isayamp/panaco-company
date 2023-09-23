@@ -26,7 +26,7 @@
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
     <link class="js-stylesheet" href="{!! asset('css/light.css') !!}" rel="stylesheet">
-    <script src="{!! asset('js/settings.js') !!}"></script>
+    {{-- <script src="{!! asset('js/settings.js') !!}"></script> --}}
     <style>
         body {
             opacity: 100;
