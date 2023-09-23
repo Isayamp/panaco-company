@@ -15,7 +15,7 @@
         </a>
 
         <ul class="sidebar-nav">
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('/') || request()->is('dashboard')) ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ url('/dashboard') }}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboards</span>
                 </a>
