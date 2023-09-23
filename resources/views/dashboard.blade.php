@@ -10,7 +10,7 @@
 
             <div class="col-auto ms-auto text-end mt-n1">
                 {{-- <a href="#" class="btn btn-light bg-white me-2">Invite a Friend</a> --}}
-                <a href="#" class="btn btn-primary">Nouveau produit</a>
+                <a href="{{ route('produits.index') }}" class="btn btn-primary">Nouveau produit</a>
             </div>
         </div>
         {{-- <div class="row">
