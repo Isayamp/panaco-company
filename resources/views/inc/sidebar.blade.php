@@ -21,7 +21,7 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('produits*')) ? 'active' : '' }}">
                 <a href="{{ route('produits.index') }}" data-bs-target="#pages" class="sidebar-link">
                     <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Produits</span>
                 </a>
