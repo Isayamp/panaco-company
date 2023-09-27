@@ -27,12 +27,12 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a href="#auth" data-bs-toggle="collapse" class="sidebar-link collapsed">
+            <li class="sidebar-item {{ (request()->is('categories*')) ? 'active' : '' }}">
+                <a href="#auth" data-bs-toggle="collapse" class="sidebar-link {{ (request()->is('categories*')) ? '' : 'collapsed' }}">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Parametres</span>
                 </a>
-                <ul id="auth" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('categories.index') }}">Categories
+                <ul id="auth" class="sidebar-dropdown list-unstyled {{ (request()->is('categories*')) ? '' : 'collapse' }} " data-bs-parent="#sidebar">
+                    <li class="sidebar-item {{ (request()->is('categories*')) ? 'active' : '' }}"><a class="sidebar-link" href="{{ route('categories.index') }}">Categories
                             Produit</a></li>
                 </ul>
             </li>
